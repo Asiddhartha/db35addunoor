@@ -1,4 +1,4 @@
 # fwb35addunoor
-Pug Assignment 
+Assignment 
 
-Hosted at https://siddharthapug.herokuapp.com/
+Hosted at https://addunoorassignment.herokuapp.com/ 
