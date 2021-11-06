@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to the jack pug
+   div(class="container-fluid")
+        div(class="row")
+            -
+                let jack = [
+                    {
+                        "Itemname": "jackdaniels cap ",
+                        "Quantity": 20,
+                        "price": 200
+                    },
+                    {
+                        "Itemname": "jackdaniels jacket",
+                        "Quantity": 20,
+                        "price": 300
+                    },
+                    {
+                        "Itemname": "jackdaniels sweatshirt",
+                        "Quantity": 20,
+                        "price": 500
+                    },                   
+                ]
+            each v,index in jack      
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.Itemname}
+                    br
+                    br
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.Quantity}
+                    br
+                    br
+                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.price}
+  script.                
+        function buy(intemNo)
+        {
+              alert(`you purchased item ${intemNo + 1}`)
+        }
