@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('jack', { title: 'Search Results for jack' });
-});
-
-module.exports = router;
+var express = require('express'); 
+const jack_controlers= require('../controllers/jack'); 
+var router = express.Router(); 
+ 
+/* GET jacks */ 
+router.get('/', jack_controlers.jack_view_all_Page ); 
+module.exports = router; 
