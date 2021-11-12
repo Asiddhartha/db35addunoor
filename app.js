@@ -3,22 +3,62 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Jack = require("./models/jack");
+var jack = require("./models/jack");
 
-const connectionString =  
-process.env.MONGO_CON; 
-mongoose = require('mongoose'); 
-mongoose.connect(connectionString,  
-{useNewUrlParser: true, 
-useUnifiedTopology: true});
+//const connectionString = process.env.MONGO_CON;
+const connectionString = 'mongodb+srv://Siddharth95:User1@cluster0.ipppx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+mongoose = require('mongoose');
+mongoose.connect(connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var jackRouter = require('./routes/jack');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var jack = require("./models/jack");
 var resourceRouter = require('./routes/resource');
 
+async function recreateDB() {
+  // Delete everything 
+  await jack.deleteMany();
+
+  let instance1 = new jack({
+    Itemname: "jackdaniels cap",
+    Quantity: 20,
+    price: 200
+  });
+
+  let instance2 = new jack({
+    Itemname: "jackdaniels jacket",
+    Quantity: 20,
+    price: 300
+  });
+
+  let instance3 = new jack({
+    Itemname: "jackdaniels sweatshirt",
+    Quantity: 20,
+    price: 500
+  });
+  instance1.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("First object saved")
+  });
+  instance2.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Second object saved")
+  });
+  instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Third object saved")
+  });
+}
+
+let reseed = true;
+if (reseed) { recreateDB(); }
 
 
 var app = express();
@@ -38,7 +78,7 @@ app.use('/users', usersRouter);
 app.use('/jack', jackRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('/', resourceRouter);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -56,42 +96,5 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-async function recreateDB(){ 
-  // Delete everything 
-  await Jack.deleteMany(); 
- 
-  let instance1 = new Jack({
-    Itemname:"jackdaniels cap",  
-    Quantity:20, 
-    price:200
-  }); 
-
-  let instance2 = new Jack({
-    Itemname:"jackdaniels jacket",  
-    Quantity:20, 
-    price:300
-  }); 
-
-  let instance3 = new Jack({
-    Itemname:"jackdaniels sweatshirt",  
-    Quantity:20, 
-    price:500
-  }); 
-  instance1.save( function(err,doc) { 
-      if(err) return console.error(err); 
-      console.log("First object saved") 
-  }); 
-  instance2.save( function(err,doc) { 
-    if(err) return console.error(err); 
-    console.log("Second object saved") 
-});
-instance3.save( function(err,doc) { 
-  if(err) return console.error(err); 
-  console.log("Third object saved") 
-});
-} 
- 
-let reseed = true; 
-if (reseed) { recreateDB();}
 
 module.exports = app;

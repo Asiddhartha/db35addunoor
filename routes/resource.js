@@ -1,31 +1,30 @@
-var express = require('express'); 
-var router = express.Router(); 
- 
+var express = require('express');
+var router = express.Router();
+
 // Require controller modules. 
-var api_controller = require('../controllers/api'); 
-var jack_controller = require('../controllers/jack'); 
- 
+var api_controller = require('../controllers/api');
+var jack_controller = require('../controllers/jack');
+
 /// API ROUTE /// 
- 
+
 // GET resources base. 
-router.get('/resource', api_controller.api); 
- 
+router.get('/', api_controller.api);
+
 /// JACK ROUTES /// 
- 
+
 // POST request for creating a Jack.  
-router.post('/resource/jacks', jack_controller.jack_create_post); 
- 
+router.post('/jack', jack_controller.jack_create_post);
+
 // DELETE request to delete Jack. 
-router.delete('/resource/jacks/:id', jack_controller.jack_delete); 
- 
+router.delete('jack/:id', jack_controller.jack_delete);
+
 // PUT request to update Jack. 
-router.put('/resource/jacks/:id', 
-jack_controller.jack_update_put); 
- 
+router.put('/jack/:id', jack_controller.jack_update_put);
+
 // GET request for one Jack. 
-router.get('/resource/jacks/:id', jack_controller.jack_detail); 
- 
+router.get('/jack/:id', jack_controller.jack_detail);
+
 // GET request for list of all Jack items. 
-router.get('/resource/jacks', jack_controller.jack_list); 
- 
-module.exports = router; 
+router.get('/jack', jack_controller.jack_list);
+
+module.exports = router;
