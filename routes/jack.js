@@ -9,4 +9,7 @@ router.get('/jack/:id', jack_controllers.jack_view_all_Page);
 router.get('/detail', jack_controllers.jack_view_one_Page); 
 /* GET create jack page */ 
 router.get('/create', jack_controllers.jack_create_Page); 
+/* GET create update page */ 
+router.get('/update', jack_controllers.jack_update_Page); 
+
 module.exports = router; 

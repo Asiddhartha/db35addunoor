@@ -15,9 +15,9 @@ block content
     div #{jackid} 
   - let actionid = "/resource/jack/" + jackid 
  
-  form(id='jackForm', action=actionid, method="PUT") 
-    div.form-group 
-        label.jackAttr(for='Itemname') jack type 
+  form(id='jackForm', action=actionid, method="PUT")
+    div.form-group
+        label.jackAttr(for='jack_type') jack type 
         input#jack_type(type='text', name='Itemname', value= jacktype ) 
     div.form-group 
         label.jackAttr(for='quantity') jack quantity

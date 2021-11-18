@@ -118,3 +118,17 @@ exports.jack_create_Page =  function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 };
+
+// Handle building the view for updating a jack. 
+// query provides the id 
+exports.jack_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await jack.findById(req.query.id) 
+        res.render('jackupdate', { title: 'jack Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
