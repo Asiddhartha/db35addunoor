@@ -10,7 +10,6 @@ exports.jack_list = async function (req, res) {
         res.status(500)
         res.send(`{"error": ${err}}`);
     }
-    res.send('NOT IMPLEMENTED: jack list');
 };
 
 // for a specific jack.
@@ -41,18 +40,6 @@ exports.jack_create_post = async function (req, res) {
     catch (err) {
         res.status(500);
         res.send(`{"error": ${err}}`);
-    }
-};
-// Handle jack delete on DELETE. 
-exports.jack_delete = async function (req, res) {
-    console.log("delete " + req.params.id)
-    try {
-        result = await jack.findByIdAndDelete(req.params.id)
-        console.log("Removed " + result)
-        res.send(result)
-    } catch (err) {
-        res.status(500)
-        res.send(`{"error": Error deleting ${err}}`);
     }
 };
 
@@ -89,3 +76,17 @@ exports.jack_view_all_Page = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// Handle jack delete on DELETE. 
+exports.jack_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await jack.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+        return
+    } 
+}; 
