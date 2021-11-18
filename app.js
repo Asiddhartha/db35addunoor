@@ -28,19 +28,19 @@ async function recreateDB() {
 
   let instance1 = new jack({
     Itemname: "jackdaniels cap",
-    Quantity: 20,
+    quantity: 20,
     price: 200
   });
 
   let instance2 = new jack({
     Itemname: "jackdaniels jacket",
-    Quantity: 20,
+    quantity: 20,
     price: 300
   });
 
   let instance3 = new jack({
     Itemname: "jackdaniels sweatshirt",
-    Quantity: 20,
+    quantity: 20,
     price: 500
   });
   instance1.save(function (err, doc) {

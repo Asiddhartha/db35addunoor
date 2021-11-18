@@ -31,7 +31,7 @@ exports.jack_create_post = async function (req, res) {
     console.log(req.body)
     let document = new jack();
     document.Itemname = req.body.Itemname;
-    document.Quantity = req.body.Quantity;
+    document.quantity = req.body.quantity;
     document.price = req.body.price;
     try {
         let result = await document.save();
@@ -53,8 +53,8 @@ exports.jack_update_put = async function (req, res) {
             toUpdate.Itemname = req.body.Itemname;
         if (req.body.price)
             toUpdate.price = req.body.price;
-        if (req.body.Quantity)
-            toUpdate.Quantity = req.body.Quantity;
+        if (req.body.quantity)
+            toUpdate.quantity = req.body.quantity;
         let result = await toUpdate.save();
         console.log("Success " + result);
         res.send(result);
@@ -88,5 +88,19 @@ exports.jack_delete = async function(req, res) {
         res.status(500) 
         res.send(`{"error": Error deleting ${err}}`); 
         return
+    } 
+}; 
+
+
+// Handle a show one view with id specified by query 
+exports.jack_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await jack.findById( req.query.id) 
+        res.render('jackdetail',  { title: 'jack Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
     } 
 }; 

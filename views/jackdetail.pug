@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let jackid = toShow._id 
+  - let Itemname = toShow.Itemname 
+  - let jackcost = toShow.price 
+  - let jacksize = toShow.quantity 
+  div 
+    div.row 
+      div(class='jackAttr mr-3') jack ID is: 
+      div #{jackid} 
+    div.row 
+      div(class='jackAttr mr-3') jack Type is: 
+      div #{Itemname} 
+    div.row 
+      div(class='jackAttr mr-3') jack Size is: 
+      div #{jacksize} 
+    div.row 
+      div(class='jackAttr mr-3') jack Cost is: 
+      div #{jackcost} 
