@@ -43,10 +43,17 @@ exports.jack_create_post = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
-
-// Handle jack delete form on DELETE. 
-exports.jack_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: jack delete DELETE ' + req.params.id);
+// Handle jack delete on DELETE. 
+exports.jack_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await jack.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 //Handle jack update form on PUT.
