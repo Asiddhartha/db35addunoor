@@ -12,4 +12,8 @@ router.get('/create', jack_controllers.jack_create_Page);
 /* GET create update page */ 
 router.get('/update', jack_controllers.jack_update_Page); 
 
+/* GET create jack page */ 
+router.get('/delete', jack_controllers.jack_delete_Page); 
+ 
+
 module.exports = router; 
