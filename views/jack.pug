@@ -5,8 +5,16 @@ block content
   - let results = thejack
   div(class="container-fuild")
     div(class="row")
-     each item in items  
-        div(class="row-sm-2", class="m-1") Item #{item.Itemname}(#{item.price}) is #{item.quantity}
+     each item in results 
+      - let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item #{item.Itemname}(#{item.price}) is #{item.quantity}
+       button.btn( class="btn-primary ml-1", onclick= destination) Update 
+
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    }
+    
 //-
       each result,index in results
         div(class = "col-sm-2" id=index onclick=`buy(${index})`) 

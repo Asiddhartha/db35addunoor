@@ -3,10 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-<<<<<<< HEAD
-=======
-
->>>>>>> cf9d950428f7f3f4703a1858182f107b52c4d347
 
 //const connectionString = process.env.MONGO_CON;
 const connectionString = 'mongodb+srv://Siddharth95:User1@cluster0.ipppx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -101,3 +97,38 @@ app.use(function (err, req, res, next) {
 
 
 module.exports = app;
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+  function (username, password, done) {
+    Account.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }))
+
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport config 
+// Use the existing connection 
+// The Account model  
+var Account = require('./models/account');
+
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
