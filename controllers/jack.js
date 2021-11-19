@@ -43,7 +43,6 @@ exports.jack_create_post = async function (req, res) {
     }
 };
 
-<<<<<<< HEAD
 
 // Handle jack delete on DELETE. 
 exports.jack_delete = async function (req, res) {
@@ -58,8 +57,6 @@ exports.jack_delete = async function (req, res) {
     }
 };
 
-=======
->>>>>>> cf9d950428f7f3f4703a1858182f107b52c4d347
 //Handle jack update form on PUT.
 exports.jack_update_put = async function (req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
