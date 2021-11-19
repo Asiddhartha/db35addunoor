@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let jackid = toShow._id 
+    - let Itemname = toShow.Itemname 
+    - let jackcost = toShow.price 
+    - let jacksize = toShow.quantity 
+    - let actionid = "/resource/jack/" + jackid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='jackAttr mr-3') jack ID is: 
+        div #{jackid} 
+      div.row 
+        div(class='jackAttr mr-3') jack Type is: 
+        div #{Itemname} 
+      div.row 
+        div(class='jackAttr mr-3') jack Price is: 
+        div #{jackcost} 
+      div.row 
+        div(class='jackAttr mr-3') jack Quantity is: 
+        div #{jacksize} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the jack collection 
+      window.location.href='/jack' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/jacks' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 

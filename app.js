@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf9d950428f7f3f4703a1858182f107b52c4d347
 
 //const connectionString = process.env.MONGO_CON;
 const connectionString = 'mongodb+srv://Siddharth95:User1@cluster0.ipppx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -27,19 +31,19 @@ async function recreateDB() {
 
   let instance1 = new jack({
     Itemname: "jackdaniels cap",
-    Quantity: 20,
+    quantity: 20,
     price: 200
   });
 
   let instance2 = new jack({
     Itemname: "jackdaniels jacket",
-    Quantity: 20,
+    quantity: 20,
     price: 300
   });
 
   let instance3 = new jack({
     Itemname: "jackdaniels sweatshirt",
-    Quantity: 20,
+    quantity: 20,
     price: 500
   });
   instance1.save(function (err, doc) {
@@ -77,7 +81,7 @@ app.use('/users', usersRouter);
 app.use('/jack', jackRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('/resource', resourceRouter);
+app.use('/', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

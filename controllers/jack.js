@@ -10,7 +10,6 @@ exports.jack_list = async function (req, res) {
         res.status(500)
         res.send(`{"error": ${err}}`);
     }
-    res.send('NOT IMPLEMENTED: jack list');
 };
 
 // for a specific jack.
@@ -32,7 +31,7 @@ exports.jack_create_post = async function (req, res) {
     console.log(req.body)
     let document = new jack();
     document.Itemname = req.body.Itemname;
-    document.Quantity = req.body.Quantity;
+    document.quantity = req.body.quantity;
     document.price = req.body.price;
     try {
         let result = await document.save();
@@ -44,6 +43,7 @@ exports.jack_create_post = async function (req, res) {
     }
 };
 
+<<<<<<< HEAD
 
 // Handle jack delete on DELETE. 
 exports.jack_delete = async function(req, res) { 
@@ -58,6 +58,8 @@ exports.jack_delete = async function(req, res) {
     } 
 }; 
 
+=======
+>>>>>>> cf9d950428f7f3f4703a1858182f107b52c4d347
 //Handle jack update form on PUT.
 exports.jack_update_put = async function (req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`);
@@ -68,8 +70,8 @@ exports.jack_update_put = async function (req, res) {
             toUpdate.Itemname = req.body.Itemname;
         if (req.body.price)
             toUpdate.price = req.body.price;
-        if (req.body.Quantity)
-            toUpdate.Quantity = req.body.Quantity;
+        if (req.body.quantity)
+            toUpdate.quantity = req.body.quantity;
         let result = await toUpdate.save();
         console.log("Success " + result);
         res.send(result);
@@ -91,3 +93,73 @@ exports.jack_view_all_Page = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// Handle jack delete on DELETE. 
+exports.jack_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await jack.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+        return
+    } 
+}; 
+
+
+// Handle a show one view with id specified by query 
+exports.jack_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await jack.findById( req.query.id) 
+        res.render('jackdetail',  { title: 'jack Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle building the view for creating a jack. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.jack_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('jackcreate', { title: 'jack Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+
+// Handle building the view for updating a jack. 
+// query provides the id 
+exports.jack_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await jack.findById(req.query.id) 
+        res.render('jackupdate', { title: 'jack Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle a delete one view with id from query 
+exports.jack_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await jack.findById(req.query.id) 
+        res.render('jackdelete', { title: 'jack Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.jackAttr { 
+  background-color:blue; 
+  width: 120px; 
+} 
