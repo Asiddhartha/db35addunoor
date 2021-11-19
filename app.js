@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var jack = require("./models/jack");
 
 //const connectionString = process.env.MONGO_CON;
 const connectionString = 'mongodb+srv://Siddharth95:User1@cluster0.ipppx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';

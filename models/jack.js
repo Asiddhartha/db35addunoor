@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const jackSchema = mongoose.Schema({
     Itemname: String,
-    Quantity: Number,
+    quantity: Number,
     price: Number
 })
 
