@@ -7,13 +7,13 @@ block content
   else 
     - let jackid = toShow._id 
     - let jacktype = toShow.Itemname 
-    - let quantityq = toShow.quantity
-    - let pricep = toShow.price
+    - let quantity = toShow.quantity
+    - let price = toShow.price
 
   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{jackid} 
-  - let actionid = "/resource/jack/" + jackid 
+  - let actionid = "/jack/" + jackid 
  
   form(id='jackForm', action=actionid, method="PUT") 
     div.form-group 
@@ -21,10 +21,10 @@ block content
         input#jack_type(type='text', name='Itemname', value= jacktype ) 
     div.form-group 
         label.jackAttr(for='quantity') jack quantity
-        input#quantity(type='text', name='quantity', value= quantityq ) 
+        input#quantity(type='text', name='quantity', value= quantity ) 
     div.form-group 
         label.jackAttr(for='price') jack price
-        input#price(type='number', name='price', value= pricep) 
+        input#price(type='number', name='price', value= price) 
     input(type="submit") 
  
   script. 

@@ -13,7 +13,7 @@ block content
     div.row(class='mb-2') 
       div.mr-1 ID is 
       div #{jackid} 
-    - let actionid = "/resource/jack/" + jackid 
+    - let actionid = "/jack/" + jackid 
     - console.log(name)
  
     form(id='jackForm', action=actionid, method="PUT")
@@ -22,10 +22,10 @@ block content
         input#jack_type(type='text', name='Itemname', value= Itemname ) 
      div.form-group 
         label.jackAttr(for='quantity') jack quantity
-        input#quantity(type='text', name='quantity', value= jackcost ) 
+        input#quantity(type='text', name='quantity', value= jacksize ) 
      div.form-group 
         label.jackAttr(for='price') jack price
-        input#price(type='number', name='price', value= jacksize) 
+        input#price(type='number', name='price', value= jackcost) 
      input(type="submit") 
  
     script. 
