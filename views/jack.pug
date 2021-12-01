@@ -7,7 +7,7 @@ block content
     div(class="row")
      each item in results 
       - let destination = `dispatch(\"/jack/update?id=${item._id}\")`
-      div(class="row-sm-2", class="m-1") Item #{item.Itemname}(#{item.price}) is #{item.quantity}
+      div(class="row-sm-2", class="m-1") Item #{item.itemname}(#{item.price}) is #{item.quantity}
        button.btn( class="btn-primary ml-1", onclick= destination) Update 
 
   script. 
@@ -18,7 +18,7 @@ block content
 //-
       each result,index in results
         div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
-          p #{result.Itemname}
+          p #{result.itemname}
           p #{result.price}
           p #{result.quantity}
 

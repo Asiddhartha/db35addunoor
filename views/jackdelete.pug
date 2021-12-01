@@ -7,7 +7,7 @@ block content
     h2 No instance to delete 
   else 
     - let jackid = toShow._id 
-    - let Itemname = toShow.Itemname 
+    - let itemname = toShow.itemname 
     - let jackcost = toShow.price 
     - let jacksize = toShow.quantity 
     - let actionid = "/jack/" + jackid 
@@ -18,7 +18,7 @@ block content
         div #{jackid} 
       div.row 
         div(class='jackAttr mr-3') jack Type is: 
-        div #{Itemname} 
+        div #{itemname} 
       div.row 
         div(class='jackAttr mr-3') jack Price is: 
         div #{jackcost} 

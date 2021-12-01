@@ -6,7 +6,7 @@ block content
     h2 No instance to update  
   else 
     - let jackid = toShow._id 
-    - let jacktype = toShow.Itemname 
+    - let jacktype = toShow.itemname 
     - let quantity = toShow.quantity
     - let price = toShow.price
 
@@ -17,14 +17,18 @@ block content
  
   form(id='jackForm', action=actionid, method="PUT") 
     div.form-group 
-        label.jackAttr(for='Itemname') jack type 
-        input#jack_type(type='text', name='Itemname', value= jacktype ) 
+        label.jackAttr(for='itemname') jack type 
+        input#jack_type(type='text', name='itemname', value= jacktype ) 
     div.form-group 
         label.jackAttr(for='quantity') jack quantity
         input#quantity(type='text', name='quantity', value= quantity, max = 6 ) 
     div.form-group 
         label.jackAttr(for='price') jack price
-        input#price(type='number', name='price', value= price) 
+        input#price(type='number', name='price', value= price)
+    div.form-group 
+        label.jackAttr(for='size') Phramacy size
+        input#size(type='number', name='size', value= price, max=5, min=0)
+
     input(type="submit") 
  
   script. 

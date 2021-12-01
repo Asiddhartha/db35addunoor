@@ -6,7 +6,7 @@ block content
     h2 No instance to update  
   else 
     - let jackid = toShow._id 
-    - let Itemname = toShow.Itemname 
+    - let itemname = toShow.itemname 
     - let jackcost = toShow.price 
     - let jacksize = toShow.quantity 
 
@@ -18,8 +18,8 @@ block content
  
     form(id='jackForm', action=actionid, method="PUT")
      div.form-group
-        label.jackAttr(for='jack_type') jack type 
-        input#jack_type(type='text', name='Itemname', value= Itemname ) 
+        label.jackAttr(for='itemname') jack type 
+        input#jack_type(type='text', name='itemname', value= itemname ) 
      div.form-group 
         label.jackAttr(for='quantity') jack quantity
         input#quantity(type='text', name='quantity', value= jacksize ) 

@@ -44,19 +44,19 @@ async function recreateDB() {
   await jack.deleteMany();
 
   let instance1 = new jack({
-    Itemname: "jackdaniels cap",
+    itemname: "jackdaniels cap",
     quantity: 20,
     price: 200
   });
 
   let instance2 = new jack({
-    Itemname: "jackdaniels jacket",
+    itemname: "jackdaniels jacket",
     quantity: 20,
     price: 300
   });
 
   let instance3 = new jack({
-    Itemname: "jackdaniels sweatshirt",
+    itemname: "jackdaniels sweatshirt",
     quantity: 20,
     price: 500
   });

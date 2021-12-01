@@ -30,7 +30,7 @@ exports.jack_detail = async function (req, res) {
 exports.jack_create_post = async function (req, res) {
     console.log(req.body)
     let document = new jack();
-    document.Itemname = req.body.Itemname;
+    document.itemname = req.body.itemname;
     document.quantity = req.body.quantity;
     document.price = req.body.price;
     try {
@@ -63,8 +63,8 @@ exports.jack_update_put = async function (req, res) {
     try {
         let toUpdate = await jack.findById(req.params.id);
         // Do updates of properties
-        if (req.body.Itemname)
-            toUpdate.Itemname = req.body.Itemname;
+        if (req.body.itemname)
+            toUpdate.itemname = req.body.itemname;
         if (req.body.price)
             toUpdate.price = req.body.price;
         if (req.body.quantity)
