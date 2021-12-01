@@ -2,19 +2,25 @@ extends layout
 
 block content
   h1= title
+  - let createView = `dispatch(\"jack/create\")`
+  button.btn(class="btn-primary m1-2", onclick=createView) Create
   - let results = thejack
   div(class="container-fuild")
     div(class="row")
-     each item in results 
-      - let destination = `dispatch(\"/jack/update?id=${item._id}\")`
-      div(class="row-sm-2", class="m-1") Item #{item.itemname}(#{item.price}) is #{item.quantity}
-       button.btn( class="btn-primary ml-1", onclick= destination) Update 
+      each item in results
+       - let updateView = `dispatch(\"/jack/update?id=${item._id}\")`
+       - let detailView = `dispatch(\"/jack/detail?id=${item._id}\")`
+       - let deleteView = `dispatch(\"/jack/delete?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item is #{item.itemname} with price is #{item.price} and quantity is #{item.quantity} </br>
+         button.btn(class="btn-primary ml-2", onclick= updateView) Update
+         button.btn(class="btn-primary ml-2", onclick= detailView) Detail
+         button.btn(class="btn-danger ml-2", onclick= deleteView) Delete
 
-  script. 
-    function dispatch(path){ 
-      window.location.href=path 
+  script.
+    function dispatch(path){
+      window.location.href=path
     }
-    
+
 //-
       each result,index in results
         div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
